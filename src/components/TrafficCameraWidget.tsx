@@ -112,14 +112,28 @@ export function TrafficCameraWidget() {
     <div className="spdr-panel p-4 font-mono text-sm h-full flex flex-col overflow-hidden">
       {/* Terminal Header */}
       <div className="flex items-center justify-between mb-3 border-b border-[#7a0000] pb-2">
-        <div className="text-[#DB231E]">
-          <span className="text-gray-600">$</span> nyc-cams <span className="text-gray-600">--live</span>
+        <div className="text-[#DB231E] uppercase tracking-wider">
+          NYC Traffic Cameras
+        </div>
+        {/* Size slider */}
+        <div className="flex items-center gap-2">
+          <span className="text-gray-600 text-xs">size</span>
+          <input
+            type="range"
+            min="120"
+            max="300"
+            step="20"
+            value={cameraSize}
+            onChange={(e) => setCameraSize(parseInt(e.target.value, 10))}
+            className="w-16 accent-[#DB231E]"
+            style={{ accentColor: '#DB231E' }}
+          />
         </div>
       </div>
 
       {/* Camera Grid */}
       <div className="text-[#DB231E] text-xs mb-3">
-        <span className="text-gray-600">#</span> LIVE_FEEDS
+        LIVE FEEDS
       </div>
       
       {selectedCameras.length === 0 ? (
