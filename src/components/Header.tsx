@@ -10,10 +10,10 @@ export function Header() {
       transition={{ duration: 0.6 }}
       className="relative text-center py-8 px-5 spdr-panel border-[#DB231E] overflow-hidden"
     >
-      {/* Octagonal pulse rings */}
-      <div className="octagon-pulse octagon-pulse-1" />
-      <div className="octagon-pulse octagon-pulse-2" />
-      <div className="octagon-pulse octagon-pulse-3" />
+      {/* Circle pulse rings */}
+      <div className="circle-pulse circle-pulse-1" />
+      <div className="circle-pulse circle-pulse-2" />
+      <div className="circle-pulse circle-pulse-3" />
       
       {/* Background glow effect */}
       <div className="absolute inset-0 bg-gradient-radial from-red-900/20 to-transparent opacity-50" />

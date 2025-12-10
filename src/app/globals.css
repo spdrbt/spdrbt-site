@@ -22,28 +22,10 @@ body {
   display: none;
 }
 
-/* Spider web background - organic pattern */
+/* Simple dark background */
 .grid-bg {
   position: relative;
   background-color: var(--spdr-bg);
-}
-
-.grid-bg::before {
-  content: '';
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
-  width: 200%;
-  height: 200%;
-  pointer-events: none;
-  z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23400000' stroke-width='1'%3E%3C!-- Radial spokes --%3E%3Cline x1='400' y1='400' x2='400' y2='0'/%3E%3Cline x1='400' y1='400' x2='800' y2='200'/%3E%3Cline x1='400' y1='400' x2='800' y2='400'/%3E%3Cline x1='400' y1='400' x2='800' y2='600'/%3E%3Cline x1='400' y1='400' x2='400' y2='800'/%3E%3Cline x1='400' y1='400' x2='0' y2='600'/%3E%3Cline x1='400' y1='400' x2='0' y2='400'/%3E%3Cline x1='400' y1='400' x2='0' y2='200'/%3E%3Cline x1='400' y1='400' x2='200' y2='0'/%3E%3Cline x1='400' y1='400' x2='600' y2='0'/%3E%3Cline x1='400' y1='400' x2='200' y2='800'/%3E%3Cline x1='400' y1='400' x2='600' y2='800'/%3E%3Cline x1='400' y1='400' x2='100' y2='100'/%3E%3Cline x1='400' y1='400' x2='700' y2='100'/%3E%3Cline x1='400' y1='400' x2='100' y2='700'/%3E%3Cline x1='400' y1='400' x2='700' y2='700'/%3E%3C!-- Irregular concentric rings --%3E%3Cpath d='M400,350 Q420,340 440,350 Q460,365 480,355 Q500,340 520,360 Q540,375 560,355 Q580,340 600,360 Q620,375 640,360 Q660,345 680,365 Q700,380 720,355 Q740,335 760,360 Q780,375 800,355'/%3E%3Cpath d='M400,300 Q430,280 460,310 Q490,330 520,290 Q550,270 580,320 Q610,340 640,300 Q670,280 700,320 Q730,345 760,300 Q790,270 800,310'/%3E%3Cpath d='M400,250 Q440,220 480,260 Q520,290 560,230 Q600,200 640,270 Q680,310 720,240 Q760,190 800,260'/%3E%3Cpath d='M400,200 Q450,160 500,220 Q550,260 600,180 Q650,140 700,220 Q750,270 800,180'/%3E%3Cpath d='M400,150 Q460,100 520,170 Q580,220 640,120 Q700,70 760,160 Q800,200 800,120'/%3E%3Cpath d='M400,100 Q470,40 540,120 Q610,180 680,60 Q750,0 800,80'/%3E%3Cpath d='M400,50 Q480,0 560,80 Q640,140 720,20 Q800,0 800,40'/%3E%3C!-- More rings on other sides --%3E%3Cpath d='M400,450 Q380,460 360,450 Q340,435 320,455 Q300,465 280,445 Q260,430 240,450 Q220,465 200,445 Q180,430 160,455 Q140,470 120,450 Q100,435 80,455 Q60,470 40,450 Q20,435 0,455'/%3E%3Cpath d='M400,500 Q370,520 340,490 Q310,470 280,510 Q250,540 220,500 Q190,470 160,510 Q130,540 100,500 Q70,470 40,510 Q10,540 0,500'/%3E%3Cpath d='M400,550 Q360,580 320,540 Q280,510 240,570 Q200,610 160,550 Q120,500 80,570 Q40,620 0,560'/%3E%3Cpath d='M400,600 Q350,640 300,590 Q250,550 200,620 Q150,680 100,600 Q50,540 0,620'/%3E%3Cpath d='M400,650 Q340,700 280,640 Q220,590 160,680 Q100,750 40,660 Q0,600 0,680'/%3E%3Cpath d='M400,700 Q330,760 260,690 Q190,630 120,740 Q50,820 0,720'/%3E%3Cpath d='M350,400 Q340,380 350,360 Q365,340 345,320 Q330,300 350,280 Q365,260 345,240 Q330,220 350,200 Q365,180 345,160 Q330,140 350,120 Q365,100 345,80 Q330,60 350,40 Q365,20 345,0'/%3E%3Cpath d='M300,400 Q280,370 310,340 Q330,310 290,280 Q270,250 310,220 Q330,190 290,160 Q270,130 310,100 Q330,70 290,40 Q270,10 310,0'/%3E%3Cpath d='M250,400 Q220,360 270,320 Q300,280 240,240 Q210,200 270,160 Q300,120 240,80 Q210,40 270,0'/%3E%3Cpath d='M200,400 Q160,350 220,300 Q260,250 190,200 Q150,150 220,100 Q260,50 190,0'/%3E%3Cpath d='M150,400 Q100,340 170,280 Q220,220 140,160 Q90,100 170,40 Q220,0 140,0'/%3E%3Cpath d='M100,400 Q40,330 120,260 Q180,190 90,120 Q30,50 120,0'/%3E%3Cpath d='M50,400 Q0,320 70,240 Q120,160 40,80 Q0,20 60,0'/%3E%3Cpath d='M0,400 Q0,320 40,240 Q80,160 0,80'/%3E%3Cpath d='M450,400 Q460,380 450,360 Q435,340 455,320 Q470,300 450,280 Q435,260 455,240 Q470,220 450,200 Q435,180 455,160 Q470,140 450,120 Q435,100 455,80 Q470,60 450,40 Q435,20 455,0'/%3E%3Cpath d='M500,400 Q520,370 490,340 Q470,310 510,280 Q530,250 490,220 Q470,190 510,160 Q530,130 490,100 Q470,70 510,40 Q530,10 490,0'/%3E%3Cpath d='M550,400 Q580,360 530,320 Q500,280 560,240 Q590,200 530,160 Q500,120 560,80 Q590,40 530,0'/%3E%3Cpath d='M600,400 Q640,350 580,300 Q540,250 610,200 Q650,150 580,100 Q540,50 610,0'/%3E%3Cpath d='M650,400 Q700,340 630,280 Q580,220 660,160 Q710,100 630,40 Q580,0 660,0'/%3E%3Cpath d='M700,400 Q760,330 680,260 Q620,190 710,120 Q770,50 680,0'/%3E%3Cpath d='M750,400 Q800,320 730,240 Q680,160 760,80 Q800,20 740,0'/%3E%3Cpath d='M800,400 Q800,320 760,240 Q720,160 800,80'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 0.5;
 }
 
 /* Glowing text effect */
@@ -62,49 +44,41 @@ body {
   backdrop-filter: blur(5px);
 }
 
-/* Octagonal pulse animation for header */
-@keyframes octagon-pulse {
+/* Circle pulse animation for header */
+@keyframes circle-pulse {
   0% {
-    transform: translate(-50%, -50%) scale(0.3);
-    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.6;
   }
   100% {
-    transform: translate(-50%, -50%) scale(2);
+    transform: translate(-50%, -50%) scale(3);
     opacity: 0;
   }
 }
 
-.octagon-pulse {
+.circle-pulse {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 100%;
-  height: 200%;
-  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-  border: 2px solid var(--spdr-red);
+  height: 300%;
+  border: 1px solid var(--spdr-red);
+  border-radius: 50%;
   background: transparent;
   opacity: 0;
   pointer-events: none;
 }
 
-.octagon-pulse::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-  border: 1px solid var(--spdr-red);
+.circle-pulse-1 {
+  animation: circle-pulse 4s ease-out infinite;
 }
 
-.octagon-pulse-1 {
-  animation: octagon-pulse 4s ease-out infinite;
+.circle-pulse-2 {
+  animation: circle-pulse 4s ease-out infinite 1.33s;
 }
 
-.octagon-pulse-2 {
-  animation: octagon-pulse 4s ease-out infinite 1.33s;
-}
-
-.octagon-pulse-3 {
-  animation: octagon-pulse 4s ease-out infinite 2.66s;
+.circle-pulse-3 {
+  animation: circle-pulse 4s ease-out infinite 2.66s;
 }
 
 /* Typewriter animation */
