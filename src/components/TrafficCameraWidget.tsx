@@ -102,10 +102,10 @@ export function TrafficCameraWidget() {
   }
 
   return (
-    <div className="spdr-panel p-4 font-mono text-sm h-full flex flex-col overflow-hidden bg-white">
+    <div className="rounded-lg p-4 font-mono text-sm h-full flex flex-col overflow-hidden bg-white border border-gray-200 shadow-lg">
       {/* Terminal Header */}
-      <div className="flex items-center justify-between mb-3 border-b border-[#7a0000] pb-2">
-        <div className="text-[#DB231E] uppercase tracking-wider">
+      <div className="flex items-center justify-between mb-3 border-b border-gray-300 pb-2">
+        <div className="text-[#DB231E] uppercase tracking-wider font-bold">
           NYC Traffic Cameras
         </div>
         {/* Size slider */}
@@ -162,8 +162,8 @@ export function TrafficCameraWidget() {
                 </button>
               </div>
               {/* Info bar - just name */}
-              <div className="p-1.5 border-t border-gray-800">
-                <div className="text-gray-400 text-[10px] truncate">
+              <div className="p-1.5 border-t border-gray-300 bg-gray-100">
+                <div className="text-gray-700 text-[10px] truncate">
                   {camera.name}
                 </div>
               </div>
@@ -182,7 +182,7 @@ export function TrafficCameraWidget() {
       </div>
 
       {/* Footer */}
-      <div className="flex-shrink-0 mt-auto pt-2 border-t border-gray-800 text-center text-gray-700 text-[10px]">
+      <div className="flex-shrink-0 mt-auto pt-2 border-t border-gray-300 text-center text-gray-500 text-[10px]">
         Auto-refresh: 5s
       </div>
     </div>
