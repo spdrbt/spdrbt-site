@@ -22,7 +22,7 @@ body {
   display: none;
 }
 
-/* Thin red web background - spider web pattern */
+/* Spider web background - organic pattern */
 .grid-bg {
   position: relative;
   background-color: var(--spdr-bg);
@@ -37,22 +37,11 @@ body {
   bottom: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: 
-    /* Radial web rings */
-    radial-gradient(circle at center, transparent 0%, transparent 40px, rgba(122, 0, 0, 0.1) 40px, transparent 41px),
-    radial-gradient(circle at center, transparent 0%, transparent 100px, rgba(122, 0, 0, 0.08) 100px, transparent 101px),
-    radial-gradient(circle at center, transparent 0%, transparent 180px, rgba(122, 0, 0, 0.06) 180px, transparent 181px),
-    radial-gradient(circle at center, transparent 0%, transparent 280px, rgba(122, 0, 0, 0.05) 280px, transparent 281px),
-    /* Diagonal web strands */
-    linear-gradient(0deg, transparent 49.5%, rgba(122, 0, 0, 0.1) 50%, transparent 50.5%),
-    linear-gradient(45deg, transparent 49.5%, rgba(122, 0, 0, 0.08) 50%, transparent 50.5%),
-    linear-gradient(90deg, transparent 49.5%, rgba(122, 0, 0, 0.1) 50%, transparent 50.5%),
-    linear-gradient(135deg, transparent 49.5%, rgba(122, 0, 0, 0.08) 50%, transparent 50.5%);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 
-                   100% 100%, 100% 100%, 100% 100%, 100% 100%;
-  background-position: 50% 50%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23400000' stroke-width='1'%3E%3C!-- Radial spokes --%3E%3Cline x1='400' y1='400' x2='400' y2='0'/%3E%3Cline x1='400' y1='400' x2='800' y2='200'/%3E%3Cline x1='400' y1='400' x2='800' y2='400'/%3E%3Cline x1='400' y1='400' x2='800' y2='600'/%3E%3Cline x1='400' y1='400' x2='400' y2='800'/%3E%3Cline x1='400' y1='400' x2='0' y2='600'/%3E%3Cline x1='400' y1='400' x2='0' y2='400'/%3E%3Cline x1='400' y1='400' x2='0' y2='200'/%3E%3Cline x1='400' y1='400' x2='200' y2='0'/%3E%3Cline x1='400' y1='400' x2='600' y2='0'/%3E%3Cline x1='400' y1='400' x2='200' y2='800'/%3E%3Cline x1='400' y1='400' x2='600' y2='800'/%3E%3C!-- Irregular concentric rings --%3E%3Cpath d='M400,350 Q420,340 440,350 Q460,365 480,355 Q500,340 520,360 Q540,375 560,355 Q580,340 600,360 Q620,375 640,360'/%3E%3Cpath d='M400,300 Q430,280 460,310 Q490,330 520,290 Q550,270 580,320 Q610,340 640,300 Q670,280 700,320'/%3E%3Cpath d='M400,250 Q440,220 480,260 Q520,290 560,230 Q600,200 640,270 Q680,310 720,240'/%3E%3Cpath d='M400,200 Q450,160 500,220 Q550,260 600,180 Q650,140 700,220 Q750,270 800,180'/%3E%3Cpath d='M400,150 Q460,100 520,170 Q580,220 640,120 Q700,70 760,160'/%3E%3Cpath d='M400,100 Q470,40 540,120 Q610,180 680,60 Q750,0 800,80'/%3E%3C!-- More rings on other sides --%3E%3Cpath d='M400,450 Q380,460 360,450 Q340,435 320,455 Q300,465 280,445 Q260,430 240,450'/%3E%3Cpath d='M400,500 Q370,520 340,490 Q310,470 280,510 Q250,540 220,500 Q190,470 160,510'/%3E%3Cpath d='M400,550 Q360,580 320,540 Q280,510 240,570 Q200,610 160,550 Q120,500 80,570'/%3E%3Cpath d='M400,600 Q350,640 300,590 Q250,550 200,620 Q150,680 100,600 Q50,540 0,620'/%3E%3Cpath d='M350,400 Q340,380 350,360 Q365,340 345,320 Q330,300 350,280'/%3E%3Cpath d='M300,400 Q280,370 310,340 Q330,310 290,280 Q270,250 310,220'/%3E%3Cpath d='M250,400 Q220,360 270,320 Q300,280 240,240 Q210,200 270,160'/%3E%3Cpath d='M450,400 Q460,380 450,360 Q435,340 455,320 Q470,300 450,280'/%3E%3Cpath d='M500,400 Q520,370 490,340 Q470,310 510,280 Q530,250 490,220'/%3E%3Cpath d='M550,400 Q580,360 530,320 Q500,280 560,240 Q590,200 530,160'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100vw 100vh;
+  background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 /* Glowing text effect */

@@ -43,15 +43,15 @@ export default function Home() {
         <AnalyticsWidget />
       </div>
 
-      {/* Cameras + Waze + MTA Tracker Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-        <div className="min-h-[500px] lg:min-h-[550px]">
+      {/* Cameras + Waze + MTA Tracker Row - Fixed height */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6" style={{ height: '700px' }}>
+        <div className="h-full overflow-hidden">
           <TrafficCameraWidget />
         </div>
-        <div className="min-h-[450px]">
+        <div className="h-full overflow-hidden">
           <TrafficOverview />
         </div>
-        <div className="min-h-[500px] lg:min-h-[550px]">
+        <div className="h-full overflow-hidden">
           <MTATracker />
         </div>
       </div>
