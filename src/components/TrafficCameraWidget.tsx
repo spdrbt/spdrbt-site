@@ -38,8 +38,7 @@ export function TrafficCameraWidget() {
   const [selectedCameraIds, setSelectedCameraIds] = useState<Set<string>>(new Set(DEFAULT_CAMERA_IDS));
   const [imageKey, setImageKey] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [cameraSize, setCameraSize] = useState(250);
-  const [showMap, setShowMap] = useState(true);
+  const [cameraSize, setCameraSize] = useState(150);
 
   // Fetch all cameras
   useEffect(() => {
@@ -110,51 +109,17 @@ export function TrafficCameraWidget() {
   }
 
   return (
-    <div className="spdr-panel p-4 lg:col-span-2 font-mono text-sm h-full flex flex-col overflow-hidden">
+    <div className="spdr-panel p-4 font-mono text-sm h-full flex flex-col overflow-hidden">
       {/* Terminal Header */}
       <div className="flex items-center justify-between mb-3 border-b border-[#7a0000] pb-2">
-        <div className="flex items-center gap-3">
-          <div className="text-[#DB231E]">
-            <span className="text-gray-600">$</span> nyc-cams <span className="text-gray-600">--all</span>
-          </div>
-          <div className="text-gray-600 text-xs">
-            [{selectedCameras.length} pinned] [{allCameras.length} total] [{formatTime()}]
-          </div>
-        </div>
-        
-        {/* Controls */}
-        <div className="flex items-center gap-3">
-          {/* Map toggle */}
-          <button
-            onClick={() => setShowMap(!showMap)}
-            className={`text-xs px-2 py-0.5 rounded ${showMap ? 'bg-[#DB231E]/20 text-[#DB231E]' : 'text-gray-600 hover:text-gray-400'}`}
-          >
-            [map]
-          </button>
-          
-          {/* Size slider */}
-          <div className="flex items-center gap-2">
-            <span className="text-gray-600 text-xs">[size]</span>
-            <input
-              type="range"
-              min="150"
-              max="400"
-              step="25"
-              value={cameraSize}
-              onChange={(e) => setCameraSize(parseInt(e.target.value, 10))}
-              className="w-16 accent-[#DB231E]"
-              style={{
-                accentColor: '#DB231E'
-              }}
-            />
-            <span className="text-[#DB231E] text-xs">{cameraSize}px</span>
-          </div>
+        <div className="text-[#DB231E]">
+          <span className="text-gray-600">$</span> nyc-cams <span className="text-gray-600">--live</span>
         </div>
       </div>
 
-      {/* Camera Grid - ABOVE the map */}
+      {/* Camera Grid */}
       <div className="text-[#DB231E] text-xs mb-3">
-        <span className="text-gray-600">#</span> LIVE_FEEDS <span className="text-gray-600">[{selectedCameras.length}]</span>
+        <span className="text-gray-600">#</span> LIVE_FEEDS
       </div>
       
       {selectedCameras.length === 0 ? (
@@ -208,20 +173,18 @@ export function TrafficCameraWidget() {
         </div>
       )}
 
-      {/* Leaflet Map - BELOW the feeds - fixed height */}
-      {showMap && (
-        <div className="flex-shrink-0">
-          <LeafletMap 
-            cameras={allCameras} 
-            selectedIds={selectedCameraIds}
-            onToggle={toggleCamera}
-          />
-        </div>
-      )}
+      {/* Leaflet Map - BELOW the feeds */}
+      <div className="flex-shrink-0">
+        <LeafletMap 
+          cameras={allCameras} 
+          selectedIds={selectedCameraIds}
+          onToggle={toggleCamera}
+        />
+      </div>
 
       {/* Footer */}
       <div className="flex-shrink-0 mt-auto pt-2 border-t border-gray-800 text-center text-gray-700 text-[10px]">
-        NYC DOT Traffic Cams | Auto-refresh: 5s | {allCameras.length} cameras available
+        Auto-refresh: 5s
       </div>
     </div>
   );

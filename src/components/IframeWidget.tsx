@@ -81,7 +81,8 @@ export function TrafficOverview() {
     <IframeWidget
       title="NYC Traffic Overview"
       src="https://embed.waze.com/iframe?zoom=10&lat=40.7589&lon=-73.9851&ct=livemap"
-      height="450px"
+      height="550px"
+      className="h-full"
     />
   );
 }
