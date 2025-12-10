@@ -1,5 +1,4 @@
 import { Header } from '@/components/Header';
-import { IncidentTicker } from '@/components/IncidentTicker';
 import { NewsWidget } from '@/components/NewsWidget';
 import { WeatherWidget } from '@/components/WeatherWidget';
 import { AnalyticsWidget } from '@/components/AnalyticsWidget';
@@ -32,9 +31,6 @@ export default function Home() {
       {/* Header */}
       <Header />
 
-      {/* Live Incident Ticker */}
-      <IncidentTicker />
-
       {/* Section Title */}
       <h2 className="text-white uppercase tracking-wider text-xl mb-6 border-b-2 border-[#7a0000] pb-2">
         NYC Overview
@@ -47,29 +43,22 @@ export default function Home() {
         <AnalyticsWidget />
       </div>
 
-      {/* Traffic Cameras Section */}
-      <h2 className="text-white uppercase tracking-wider text-xl mt-10 mb-6 border-b-2 border-[#7a0000] pb-2">
-        Live Traffic Cameras
-      </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2" style={{ height: '680px' }}>
+      {/* Cameras + Waze + MTA Tracker Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6" style={{ height: '550px' }}>
+        <div className="h-full">
           <TrafficCameraWidget />
         </div>
-        <div style={{ height: '680px' }}>
+        <div className="h-full">
+          <TrafficOverview />
+        </div>
+        <div className="h-full">
           <MTATracker />
         </div>
       </div>
 
-      {/* Traffic + Air Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-        <TrafficOverview />
-        <div className="lg:col-span-2">
-          <AirTraffic />
-        </div>
-      </div>
-
-      {/* Maritime */}
-      <div className="mt-6">
+      {/* Air Traffic + Maritime Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+        <AirTraffic />
         <MaritimeTraffic />
       </div>
 
