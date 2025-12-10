@@ -26,6 +26,12 @@ interface LeafletMiniMapProps {
 // NYC center coordinates
 const NYC_CENTER: [number, number] = [40.7128, -73.95];
 
+// NYC Bounds - limit map to NYC area only
+const NYC_BOUNDS: [[number, number], [number, number]] = [
+  [40.45, -74.30], // Southwest corner (Staten Island)
+  [40.95, -73.65]  // Northeast corner (Bronx/Queens)
+];
+
 // Custom pin icon SVG - white default, red when selected
 const createPinIcon = (isSelected: boolean) => {
   const fillColor = isSelected ? '#DB231E' : '#ffffff';
@@ -109,6 +115,10 @@ export default function LeafletMiniMap({ cameras, selectedIds, onToggle }: Leafl
       <MapContainer
         center={NYC_CENTER}
         zoom={11}
+        minZoom={10}
+        maxZoom={18}
+        maxBounds={NYC_BOUNDS}
+        maxBoundsViscosity={1.0}
         style={{ height: '100%', width: '100%' }}
         zoomControl={true}
         attributionControl={false}

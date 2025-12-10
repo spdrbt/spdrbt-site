@@ -47,11 +47,11 @@ export default function Home() {
       <h2 className="text-white uppercase tracking-wider text-xl mt-10 mb-6 border-b-2 border-[#7a0000] pb-2">
         Live Traffic Cameras
       </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch" style={{ minHeight: '650px' }}>
-        <div className="lg:col-span-2 h-full">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6" style={{ height: '650px' }}>
+        <div className="lg:col-span-2 h-full overflow-hidden">
           <TrafficCameraWidget />
         </div>
-        <div className="h-full">
+        <div className="h-full overflow-hidden">
           <MTATracker />
         </div>
       </div>

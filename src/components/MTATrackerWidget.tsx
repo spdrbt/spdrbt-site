@@ -643,11 +643,11 @@ function BusRouteView({
                   />
                   <div 
                     className={`relative z-10 w-2.5 h-2.5 rounded-full border-2 ${
-                      stopStatus?.status === 'arriving' ? 'scale-125' : ''
+                      stopStatus ? 'scale-125' : ''
                     }`}
                     style={{ 
-                      borderColor: stopStatus?.status === 'arriving' ? '#22c55e' : routeData.color,
-                      backgroundColor: stopStatus?.status === 'arriving' ? '#22c55e' : (isTerminal ? routeData.color : '#fff'),
+                      borderColor: stopStatus ? '#22c55e' : routeData.color,
+                      backgroundColor: stopStatus ? '#22c55e' : (isTerminal ? routeData.color : '#fff'),
                     }}
                   />
                 </div>
