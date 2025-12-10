@@ -112,7 +112,7 @@ export function MaritimeTraffic() {
   return (
     <IframeWidget
       title="Maritime Transponder"
-      src="https://www.marinetraffic.com/en/ais/embed/zoom:11/centery:40.65/centerx:-74.02/maptype:1/shownames:false/mmsi:0/shipid:0/fleet:/fleet_id:/vessel:/"
+      src="https://www.marinetraffic.com/en/ais/embed/zoom:12/centery:40.73/centerx:-73.90/maptype:1/shownames:false/mmsi:0/shipid:0/fleet:/fleet_id:/vessel:/"
       height="600px"
     />
   );
