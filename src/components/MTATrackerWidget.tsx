@@ -266,19 +266,23 @@ function SubwayLineView({
                 {station.name}
               </span>
               
-              {/* Train at station indicator with direction */}
+              {/* Train at station indicator with direction - SOLID */}
               {hasTrainHere && (
-                <span className="flex items-center gap-1 px-1.5 py-0.5 bg-green-500 text-white text-xs font-bold rounded animate-pulse">
-                  <Train className="w-3 h-3" />
-                  <span>TRAIN HERE</span>
+                <span className="flex items-center gap-1 px-2 py-1 bg-green-500 text-white text-xs font-bold rounded shadow-md">
+                  <div className="relative">
+                    <Train className="w-4 h-4" />
+                    <div className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-white rounded-full" />
+                  </div>
+                  <span>HERE</span>
                   {station.trainDirection === 'North' && <ArrowUp className="w-3 h-3" />}
                   {station.trainDirection === 'South' && <ArrowDown className="w-3 h-3" />}
                 </span>
               )}
               
-              {/* Train arriving indicator with direction */}
+              {/* Train arriving indicator with direction - PULSING */}
               {trainArriving && !hasTrainHere && (
-                <span className="flex items-center gap-1 px-1.5 py-0.5 bg-orange-400 text-white text-xs font-medium rounded">
+                <span className="flex items-center gap-1 px-2 py-1 bg-orange-400 text-white text-xs font-medium rounded shadow-md animate-pulse">
+                  <Train className="w-3 h-3 animate-bounce" />
                   <span>ARRIVING</span>
                   {station.trainDirection === 'North' && <ArrowUp className="w-3 h-3" />}
                   {station.trainDirection === 'South' && <ArrowDown className="w-3 h-3" />}
