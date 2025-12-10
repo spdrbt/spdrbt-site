@@ -1,5 +1,4 @@
 import { Header } from '@/components/Header';
-import { TerminalChat } from '@/components/TerminalChat';
 import { NewsWidget } from '@/components/NewsWidget';
 import { WeatherWidget } from '@/components/WeatherWidget';
 import { AnalyticsWidget } from '@/components/AnalyticsWidget';
@@ -31,9 +30,6 @@ export default function Home() {
 
       {/* Header */}
       <Header />
-
-      {/* SPDR-BT Terminal Chat */}
-      <TerminalChat />
 
       {/* Section Title */}
       <h2 className="text-white uppercase tracking-wider text-xl mb-6 border-b-2 border-[#7a0000] pb-2">

@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 
-const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
-const LAT = process.env.NEXT_PUBLIC_NYC_LAT || '40.7128';
-const LON = process.env.NEXT_PUBLIC_NYC_LON || '-74.0060';
+// Use server-side env var or fall back to NEXT_PUBLIC_ version
+const API_KEY = process.env.WEATHER_API_KEY || process.env.NEXT_PUBLIC_WEATHER_API_KEY;
+const LAT = process.env.NYC_LAT || process.env.NEXT_PUBLIC_NYC_LAT || '40.7128';
+const LON = process.env.NYC_LON || process.env.NEXT_PUBLIC_NYC_LON || '-74.0060';
 
 export async function GET() {
   try {
