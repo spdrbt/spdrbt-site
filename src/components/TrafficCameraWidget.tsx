@@ -35,10 +35,14 @@ const LeafletMap = dynamic(() => import('./LeafletMiniMap'), {
 
 export function TrafficCameraWidget() {
   const [allCameras, setAllCameras] = useState<Camera[]>([]);
-  const [selectedCameraIds, setSelectedCameraIds] = useState<Set<string>>(new Set(DEFAULT_CAMERA_IDS));
+  // Track order of selected cameras (new ones added to end)
+  const [selectedCameraOrder, setSelectedCameraOrder] = useState<string[]>([...DEFAULT_CAMERA_IDS]);
   const [imageKey, setImageKey] = useState(0);
   const [loading, setLoading] = useState(true);
   const [cameraSize, setCameraSize] = useState(150);
+
+  // Create a Set for quick lookup
+  const selectedCameraIds = new Set(selectedCameraOrder);
 
   // Fetch all cameras
   useEffect(() => {
@@ -67,36 +71,25 @@ export function TrafficCameraWidget() {
   }, []);
 
   const toggleCamera = useCallback((cameraId: string) => {
-    setSelectedCameraIds(prev => {
-      const next = new Set(prev);
-      if (next.has(cameraId)) {
-        next.delete(cameraId);
+    setSelectedCameraOrder(prev => {
+      if (prev.includes(cameraId)) {
+        // Remove camera
+        return prev.filter(id => id !== cameraId);
       } else {
-        next.add(cameraId);
+        // Add camera to end (bottom of list)
+        return [...prev, cameraId];
       }
-      return next;
     });
   }, []);
 
   const removeCamera = useCallback((cameraId: string) => {
-    setSelectedCameraIds(prev => {
-      const next = new Set(prev);
-      next.delete(cameraId);
-      return next;
-    });
+    setSelectedCameraOrder(prev => prev.filter(id => id !== cameraId));
   }, []);
 
-  const formatTime = () => {
-    return new Date().toLocaleTimeString('en-US', { 
-      hour12: false, 
-      hour: '2-digit', 
-      minute: '2-digit', 
-      second: '2-digit' 
-    });
-  };
-
-  // Get selected cameras in order
-  const selectedCameras = allCameras.filter(c => selectedCameraIds.has(c.id));
+  // Get selected cameras in the order they were added
+  const selectedCameras = selectedCameraOrder
+    .map(id => allCameras.find(c => c.id === id))
+    .filter((c): c is Camera => c !== undefined);
 
   if (loading) {
     return (
@@ -144,7 +137,7 @@ export function TrafficCameraWidget() {
         <div 
           className="flex flex-wrap gap-2 mb-3 flex-1 overflow-y-auto min-h-0 content-start"
         >
-          {selectedCameras.map((camera, index) => (
+          {selectedCameras.map((camera) => (
             <div 
               key={camera.id} 
               className="bg-black/50 border border-gray-800 rounded overflow-hidden group flex-shrink-0"
