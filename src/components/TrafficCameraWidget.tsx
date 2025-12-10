@@ -110,7 +110,7 @@ export function TrafficCameraWidget() {
   }
 
   return (
-    <div className="spdr-panel p-4 lg:col-span-2 font-mono text-sm">
+    <div className="spdr-panel p-4 lg:col-span-2 font-mono text-sm h-full flex flex-col overflow-hidden">
       {/* Terminal Header */}
       <div className="flex items-center justify-between mb-3 border-b border-[#7a0000] pb-2">
         <div className="flex items-center gap-3">
@@ -158,14 +158,15 @@ export function TrafficCameraWidget() {
       </div>
       
       {selectedCameras.length === 0 ? (
-        <div className="text-gray-600 text-center py-8 mb-3">
+        <div className="text-gray-600 text-center py-8 mb-3 flex-1">
           [No cameras selected. Click markers on the map below to add feeds.]
         </div>
       ) : (
         <div 
-          className="grid gap-2 mb-3"
+          className="grid gap-2 mb-3 flex-1 overflow-y-auto min-h-0"
           style={{ 
             gridTemplateColumns: `repeat(auto-fill, minmax(${cameraSize}px, 1fr))`,
+            alignContent: 'start',
           }}
         >
           {selectedCameras.map((camera, index) => (
@@ -207,17 +208,19 @@ export function TrafficCameraWidget() {
         </div>
       )}
 
-      {/* Leaflet Map - BELOW the feeds */}
+      {/* Leaflet Map - BELOW the feeds - fixed height */}
       {showMap && (
-        <LeafletMap 
-          cameras={allCameras} 
-          selectedIds={selectedCameraIds}
-          onToggle={toggleCamera}
-        />
+        <div className="flex-shrink-0">
+          <LeafletMap 
+            cameras={allCameras} 
+            selectedIds={selectedCameraIds}
+            onToggle={toggleCamera}
+          />
+        </div>
       )}
 
       {/* Footer */}
-      <div className="mt-3 pt-2 border-t border-gray-800 text-center text-gray-700 text-[10px]">
+      <div className="flex-shrink-0 mt-auto pt-2 border-t border-gray-800 text-center text-gray-700 text-[10px]">
         NYC DOT Traffic Cams | Auto-refresh: 5s | {allCameras.length} cameras available
       </div>
     </div>
