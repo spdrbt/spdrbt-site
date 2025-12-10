@@ -102,7 +102,7 @@ export function TrafficCameraWidget() {
   }
 
   return (
-    <div className="spdr-panel p-4 font-mono text-sm h-full flex flex-col overflow-hidden">
+    <div className="spdr-panel p-4 font-mono text-sm h-full flex flex-col overflow-hidden bg-white">
       {/* Terminal Header */}
       <div className="flex items-center justify-between mb-3 border-b border-[#7a0000] pb-2">
         <div className="text-[#DB231E] uppercase tracking-wider">

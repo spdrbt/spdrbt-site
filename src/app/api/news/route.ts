@@ -16,13 +16,13 @@ const RSS_URLS = [
   'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fgothamist.com%2Ffeed',
 ];
 
-// Borough keywords for filtering
+// Borough keywords for filtering - broadened for better coverage
 const BOROUGH_KEYWORDS: Record<string, string[]> = {
-  manhattan: ['manhattan', 'midtown', 'harlem', 'village', 'soho', 'tribeca', 'chelsea', 'upper east', 'upper west', 'lower east', 'financial district'],
-  brooklyn: ['brooklyn', 'williamsburg', 'bushwick', 'park slope', 'bed-stuy', 'dumbo', 'greenpoint', 'crown heights', 'flatbush'],
-  queens: ['queens', 'astoria', 'flushing', 'lic', 'long island city', 'jackson heights', 'jamaica', 'forest hills'],
-  bronx: ['bronx', 'fordham', 'riverdale', 'yankee', 'pelham', 'mott haven'],
-  'staten-island': ['staten', 'ferry', 'st. george'],
+  manhattan: ['manhattan', 'midtown', 'harlem', 'village', 'soho', 'tribeca', 'chelsea', 'upper east', 'upper west', 'lower east', 'financial district', 'times square', 'central park', 'broadway', 'wall street', 'chinatown', 'little italy', 'east village', 'west side', 'downtown', 'uptown', 'herald square', 'union square', 'gramercy', 'murray hill', 'kips bay', 'stuyvesant', 'washington heights', 'inwood', 'morningside'],
+  brooklyn: ['brooklyn', 'williamsburg', 'bushwick', 'park slope', 'bed-stuy', 'dumbo', 'greenpoint', 'crown heights', 'flatbush', 'bay ridge', 'bensonhurst', 'coney island', 'brighton beach', 'sunset park', 'red hook', 'cobble hill', 'carroll gardens', 'prospect', 'fort greene', 'clinton hill', 'brownsville', 'east new york', 'canarsie', 'sheepshead', 'midwood', 'borough park', 'dyker heights'],
+  queens: ['queens', 'astoria', 'flushing', 'lic', 'long island city', 'jackson heights', 'jamaica', 'forest hills', 'rego park', 'corona', 'elmhurst', 'woodside', 'sunnyside', 'bayside', 'whitestone', 'college point', 'far rockaway', 'rockaway', 'ridgewood', 'maspeth', 'middle village', 'glendale', 'ozone park', 'howard beach', 'kew gardens', 'fresh meadows', 'little neck', 'douglaston'],
+  bronx: ['bronx', 'fordham', 'riverdale', 'yankee', 'pelham', 'mott haven', 'hunts point', 'south bronx', 'tremont', 'morris', 'highbridge', 'concourse', 'kingsbridge', 'wakefield', 'co-op city', 'throgs neck', 'city island', 'parkchester', 'soundview', 'castle hill', 'westchester square', 'norwood', 'bedford park', 'belmont', 'arthur avenue'],
+  'staten-island': ['staten', 'ferry', 'st. george', 'tottenville', 'great kills', 'new dorp', 'south beach', 'midland beach', 'todt hill', 'stapleton', 'port richmond', 'west brighton', 'westerleigh', 'bulls head', 'travis', 'richmond', 'verrazano'],
 };
 
 // Negative keywords for vibe calculation

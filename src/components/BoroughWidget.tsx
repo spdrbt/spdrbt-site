@@ -167,23 +167,20 @@ function BoroughWidgetInner({ data, news }: { data: BoroughData; news: BoroughNe
             <h3 className="text-white text-sm uppercase tracking-wider border-b border-[#555] pb-1 mb-2">
               Local Headline
             </h3>
-            <ul className="text-sm">
+            <div className="text-sm text-left">
               {news ? (
-                <li>
-                  <a
-                    href={news.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#ff8a8a] hover:text-white transition-colors flex items-start gap-2 group"
-                  >
-                    <ExternalLink className="w-4 h-4 mt-0.5 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span>{news.title}</span>
-                  </a>
-                </li>
+                <a
+                  href={news.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#ff8a8a] hover:text-white transition-colors block text-left"
+                >
+                  {news.title}
+                </a>
               ) : (
-                <li className="text-[#ff8a8a]">No major local alerts.</li>
+                <p className="text-[#ff8a8a] text-left">No major local alerts.</p>
               )}
-            </ul>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
