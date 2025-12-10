@@ -1,26 +1,332 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --spdr-red: #DB231E;
+  --spdr-red-dark: #7a0000;
+  --spdr-red-light: #ff5c5c;
+  --spdr-red-muted: #ff8a8a;
+  --spdr-bg: #0F0F0F;
+  --spdr-panel: rgba(25, 0, 0, 0.8);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base styles */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--spdr-bg);
+  color: var(--spdr-red-light);
+  overflow-x: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* CRT Scanline Effect (reduced by 30%) */
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  animation: scanlines 0.1s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes scanlines {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 2px; }
+}
+
+/* Grid background */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(255, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 35px 35px;
+}
+
+/* Glowing text effect */
+.glow-text {
+  text-shadow: 0 0 10px rgba(219, 35, 30, 0.8),
+               0 0 20px rgba(219, 35, 30, 0.4),
+               0 0 30px rgba(219, 35, 30, 0.2);
+}
+
+/* Panel styles */
+.spdr-panel {
+  background-color: var(--spdr-panel);
+  border: 1px solid var(--spdr-red-dark);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(100, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+/* Sonar animation */
+@keyframes sonar {
+  0% { width: 0; height: 0; opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { width: 400px; height: 400px; opacity: 0; }
+}
+
+.sonar-ring::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 2px solid var(--spdr-red);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: sonar 4s ease-out infinite;
+  opacity: 0;
+}
+
+/* Typewriter animation */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--spdr-red); }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid var(--spdr-red);
+  white-space: nowrap;
+  animation: 
+    typewriter 2s steps(40) 1s forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+/* Pulse glow animation */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(219, 35, 30, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(219, 35, 30, 0.8), 0 0 30px rgba(219, 35, 30, 0.4); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Flicker animation */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  52% { opacity: 1; }
+  54% { opacity: 0.9; }
+}
+
+.flicker {
+  animation: flicker 0.3s ease-in-out infinite;
+}
+
+/* Data stream animation */
+@keyframes data-stream {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+.data-stream {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(219, 35, 30, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 100% 200%;
+  animation: data-stream 3s linear infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--spdr-red-dark);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--spdr-red);
+}
+
+/* Subway line colors */
+.line-123 { background-color: #EE352E; }
+.line-456 { background-color: #00933C; }
+.line-7 { background-color: #B933AD; }
+.line-ACE { background-color: #0039A6; }
+.line-BDFM { background-color: #FF6319; }
+.line-G { background-color: #6CBE45; }
+.line-JZ { background-color: #996633; }
+.line-L { background-color: #A7A9AC; }
+.line-NQRW { background-color: #FCCC0A; color: #333; }
+.line-S { background-color: #808183; }
+.line-SIR { background-color: #0039A6; }
+
+/* AQI Colors */
+.aqi-good { color: #8CE99A !important; }
+.aqi-fair { color: #FFEC99 !important; }
+.aqi-moderate { color: #FFAB40 !important; }
+.aqi-poor { color: #FF6B6B !important; }
+.aqi-very-poor { color: #B5179E !important; }
+
+/* Vibe colors */
+.vibe-positive { color: #a3e9a4; text-shadow: 0 0 10px rgba(163, 233, 164, 0.3); }
+.vibe-negative { color: #ff6b6b; text-shadow: 0 0 10px rgba(255, 107, 107, 0.3); }
+.vibe-neutral { color: #f1f3f5; }
+
+/* Loading skeleton */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 92, 92, 0.1) 0%,
+    rgba(255, 92, 92, 0.2) 50%,
+    rgba(255, 92, 92, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Hide iframes loading */
+iframe {
+  background: var(--spdr-panel);
+}
+
+/* Audio player styling */
+audio {
+  width: 100%;
+  height: 30px;
+  filter: invert(1) grayscale(1);
+  border-radius: 4px;
+}
+
+/* Responsive font scaling */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Focus states */
+*:focus-visible {
+  outline: 2px solid var(--spdr-red);
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background: var(--spdr-red);
+  color: white;
+}
+
+/* Leaflet Map Styles */
+.leaflet-container {
+  background: #111 !important;
+  font-family: ui-monospace, 'Courier New', monospace;
+}
+
+.camera-number-tooltip {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.camera-number-tooltip::before {
+  display: none !important;
+}
+
+.leaflet-tooltip {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Leaflet Popup Styles */
+.leaflet-popup-content-wrapper {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border: 1px solid #7a0000 !important;
+  border-radius: 6px !important;
+  color: #fff !important;
+}
+
+.leaflet-popup-content {
+  margin: 8px !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border-left: 1px solid #7a0000 !important;
+  border-bottom: 1px solid #7a0000 !important;
+}
+
+.leaflet-popup-close-button {
+  color: #DB231E !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: #ff5c5c !important;
+}
+
+/* Custom pin icon */
+.custom-pin-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Custom cluster markers */
+.custom-cluster-icon {
+  background: transparent !important;
+}
+
+.cluster-marker {
+  background: #fff !important;
+  border: 2px solid #DB231E !important;
+  border-radius: 50% !important;
+  color: #DB231E !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: ui-monospace, 'Courier New', monospace !important;
+  font-weight: bold !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3) !important;
+}
+
+/* Leaflet cluster default overrides */
+.marker-cluster-small,
+.marker-cluster-medium,
+.marker-cluster-large {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border: 2px solid #DB231E !important;
+}
+
+.marker-cluster-small div,
+.marker-cluster-medium div,
+.marker-cluster-large div {
+  background: transparent !important;
+  color: #DB231E !important;
+  font-family: ui-monospace, 'Courier New', monospace !important;
+  font-weight: bold !important;
 }
