@@ -142,15 +142,15 @@ export function TrafficCameraWidget() {
         </div>
       ) : (
         <div 
-          className="grid gap-2 mb-3 flex-1 overflow-y-auto min-h-0"
-          style={{ 
-            gridTemplateColumns: `repeat(auto-fill, minmax(${cameraSize}px, 1fr))`,
-            alignContent: 'start',
-          }}
+          className="flex flex-wrap gap-2 mb-3 flex-1 overflow-y-auto min-h-0 content-start"
         >
           {selectedCameras.map((camera, index) => (
-            <div key={camera.id} className="bg-black/50 border border-gray-800 rounded overflow-hidden group">
-              <div className="aspect-square md:aspect-video bg-black relative">
+            <div 
+              key={camera.id} 
+              className="bg-black/50 border border-gray-800 rounded overflow-hidden group flex-shrink-0"
+              style={{ width: `${cameraSize}px` }}
+            >
+              <div className="aspect-square bg-black relative">
                 <img
                   key={`${camera.id}-${imageKey}`}
                   src={`${camera.imageUrl}?t=${Date.now()}`}

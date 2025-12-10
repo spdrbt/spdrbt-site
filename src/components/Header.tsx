@@ -8,8 +8,13 @@ export function Header() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative text-center py-8 px-5 spdr-panel border-[#DB231E] overflow-hidden sonar-ring"
+      className="relative text-center py-8 px-5 spdr-panel border-[#DB231E] overflow-hidden"
     >
+      {/* Octagonal pulse rings */}
+      <div className="octagon-pulse octagon-pulse-1" />
+      <div className="octagon-pulse octagon-pulse-2" />
+      <div className="octagon-pulse octagon-pulse-3" />
+      
       {/* Background glow effect */}
       <div className="absolute inset-0 bg-gradient-radial from-red-900/20 to-transparent opacity-50" />
       
