@@ -168,18 +168,10 @@ export function TrafficCameraWidget() {
                   [x]
                 </button>
               </div>
-              {/* Info bar with index, name, and borough */}
-              <div className="p-1.5 border-t border-gray-800 flex items-center justify-between">
-                <div className="flex-1 min-w-0">
-                  <div className="text-gray-400 text-[10px] truncate flex items-center gap-1">
-                    <span className="text-[#DB231E] font-mono">#{index + 1}</span>
-                    <span>{camera.name}</span>
-                  </div>
-                  <div className="text-gray-600 text-[10px]">{camera.source}</div>
-                </div>
-                {/* Borough badge - bottom right */}
-                <div className="bg-[#DB231E]/80 px-1.5 py-0.5 rounded flex-shrink-0 ml-1">
-                  <span className="text-[10px] text-white font-mono">{camera.area}</span>
+              {/* Info bar - just name */}
+              <div className="p-1.5 border-t border-gray-800">
+                <div className="text-gray-400 text-[10px] truncate">
+                  {camera.name}
                 </div>
               </div>
             </div>

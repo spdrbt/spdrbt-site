@@ -17,43 +17,42 @@ body {
   overflow-x: hidden;
 }
 
-/* CRT Scanline Effect (subtle) */
+/* CRT Scanline Effect - DISABLED */
 .crt-overlay {
-  pointer-events: none;
+  display: none;
+}
+
+/* Thin red web background - spider web pattern */
+.grid-bg {
+  position: relative;
+  background-color: var(--spdr-bg);
+}
+
+.grid-bg::before {
+  content: '';
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 9999;
-  background: 
-    repeating-linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.05),
-      rgba(0, 0, 0, 0.05) 1px,
-      transparent 1px,
-      transparent 2px
-    );
-  animation: scanlines 0.1s linear infinite;
-  opacity: 0.4;
-}
-
-@keyframes scanlines {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 2px; }
-}
-
-/* Thin red web background */
-.grid-bg {
+  pointer-events: none;
+  z-index: 0;
   background-image: 
-    /* Diagonal lines for web effect */
-    linear-gradient(45deg, rgba(122, 0, 0, 0.15) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(122, 0, 0, 0.15) 1px, transparent 1px),
-    /* Horizontal and vertical thin lines */
-    linear-gradient(rgba(122, 0, 0, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(122, 0, 0, 0.08) 1px, transparent 1px);
-  background-size: 60px 60px, 60px 60px, 120px 120px, 120px 120px;
-  background-position: 0 0, 30px 0, 0 0, 0 0;
+    /* Radial web rings */
+    radial-gradient(circle at center, transparent 0%, transparent 40px, rgba(122, 0, 0, 0.1) 40px, transparent 41px),
+    radial-gradient(circle at center, transparent 0%, transparent 100px, rgba(122, 0, 0, 0.08) 100px, transparent 101px),
+    radial-gradient(circle at center, transparent 0%, transparent 180px, rgba(122, 0, 0, 0.06) 180px, transparent 181px),
+    radial-gradient(circle at center, transparent 0%, transparent 280px, rgba(122, 0, 0, 0.05) 280px, transparent 281px),
+    /* Diagonal web strands */
+    linear-gradient(0deg, transparent 49.5%, rgba(122, 0, 0, 0.1) 50%, transparent 50.5%),
+    linear-gradient(45deg, transparent 49.5%, rgba(122, 0, 0, 0.08) 50%, transparent 50.5%),
+    linear-gradient(90deg, transparent 49.5%, rgba(122, 0, 0, 0.1) 50%, transparent 50.5%),
+    linear-gradient(135deg, transparent 49.5%, rgba(122, 0, 0, 0.08) 50%, transparent 50.5%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 
+                   100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0.8;
 }
 
 /* Glowing text effect */
