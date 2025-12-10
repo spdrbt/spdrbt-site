@@ -171,7 +171,7 @@ export function TrafficCameraWidget() {
         >
           {selectedCameras.map((camera, index) => (
             <div key={camera.id} className="bg-black/50 border border-gray-800 rounded overflow-hidden group">
-              <div className="aspect-video bg-black relative">
+              <div className="aspect-square md:aspect-video bg-black relative">
                 <img
                   key={`${camera.id}-${imageKey}`}
                   src={`${camera.imageUrl}?t=${Date.now()}`}

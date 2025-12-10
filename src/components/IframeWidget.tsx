@@ -142,8 +142,8 @@ export function SPDRBTMap() {
     <IframeWidget
       title="sPDRBTs FOUND"
       src="https://lookerstudio.google.com/embed/reporting/298aa81b-2e6d-448e-be0b-a4261b8392b7/page/7oYTF"
-      height="700px"
-      scale={0.85}
+      height="1200px"
+      scale={0.9}
     />
   );
 }
