@@ -527,10 +527,12 @@ function BusRouteView({
   // Find which stops have buses nearby
   const getStopStatus = (stopName: string) => {
     for (const vehicle of routeData.vehicles) {
-      if (vehicle.nextStop?.toLowerCase().includes(stopName.toLowerCase().slice(0, 10))) {
+      const nextStopName = typeof vehicle.nextStop === 'string' ? vehicle.nextStop : '';
+      if (nextStopName && nextStopName.toLowerCase().includes(stopName.toLowerCase().slice(0, 10))) {
         const dist = vehicle.distanceFromStop;
         if (dist) {
-          const meters = parseFloat(dist);
+          const distStr = typeof dist === 'string' ? dist : String(dist);
+          const meters = parseFloat(distStr);
           if (!isNaN(meters)) {
             if (meters < 100) return { status: 'arriving', vehicle };
             if (meters < 500) return { status: 'approaching', vehicle };

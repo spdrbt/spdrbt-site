@@ -180,26 +180,27 @@ export function TrafficCameraWidget() {
                     (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect fill="%23111" width="400" height="300"/><text fill="%23333" font-family="monospace" font-size="12" x="50%" y="50%" text-anchor="middle">[FEED_OFFLINE]</text></svg>';
                   }}
                 />
-                {/* Live indicator with index - no LIVE text */}
-                <div className="absolute top-1 left-1 flex items-center gap-1 bg-black/70 px-1.5 py-0.5 rounded">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#DB231E] animate-pulse" />
-                  <span className="text-[10px] text-white font-mono">#{index + 1}</span>
-                </div>
-                {/* Borough indicator - moved to bottom right */}
-                <div className="absolute bottom-1 right-1 bg-[#DB231E]/80 px-1.5 py-0.5 rounded group-hover:hidden">
-                  <span className="text-[10px] text-white font-mono">{camera.area}</span>
-                </div>
-                {/* Remove button - shows on hover, replaces borough badge position */}
+                {/* Remove button - shows on hover */}
                 <button
                   onClick={() => removeCamera(camera.id)}
-                  className="absolute bottom-1 right-1 bg-black/70 hover:bg-red-900/80 text-gray-500 hover:text-red-400 text-xs px-1.5 py-0.5 rounded hidden group-hover:block transition-opacity"
+                  className="absolute top-1 right-1 bg-black/70 hover:bg-red-900/80 text-gray-500 hover:text-red-400 text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   [x]
                 </button>
               </div>
-              <div className="p-1.5 border-t border-gray-800">
-                <div className="text-gray-400 text-[10px] truncate">{camera.name}</div>
-                <div className="text-gray-600 text-[10px]">{camera.source}</div>
+              {/* Info bar with index, name, and borough */}
+              <div className="p-1.5 border-t border-gray-800 flex items-center justify-between">
+                <div className="flex-1 min-w-0">
+                  <div className="text-gray-400 text-[10px] truncate flex items-center gap-1">
+                    <span className="text-[#DB231E] font-mono">#{index + 1}</span>
+                    <span>{camera.name}</span>
+                  </div>
+                  <div className="text-gray-600 text-[10px]">{camera.source}</div>
+                </div>
+                {/* Borough badge - bottom right */}
+                <div className="bg-[#DB231E]/80 px-1.5 py-0.5 rounded flex-shrink-0 ml-1">
+                  <span className="text-[10px] text-white font-mono">{camera.area}</span>
+                </div>
               </div>
             </div>
           ))}
