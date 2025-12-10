@@ -852,45 +852,52 @@ export function MTATrackerWidget() {
       animate={{ opacity: 1, y: 0 }}
       className="spdr-panel p-4 h-full flex flex-col"
     >
-      {/* Header with Tabs */}
-      <div className="flex items-center justify-between border-b-2 border-[#7a0000] pb-2 mb-3 flex-shrink-0">
-        <div className="flex items-center gap-2">
-          <h2 className="text-white uppercase tracking-wider text-sm font-semibold">
-            MTA Tracker
-          </h2>
-          {/* Tabs */}
-          <div className="flex ml-3 bg-black/30 rounded-md p-0.5">
-            <button
-              onClick={() => handleTabChange('subway')}
-              className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-colors ${
-                activeTab === 'subway' 
-                  ? 'bg-[#7a0000] text-white' 
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              <Train className="w-3 h-3" />
-              Subway
-            </button>
-            <button
-              onClick={() => handleTabChange('bus')}
-              className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-colors ${
-                activeTab === 'bus' 
-                  ? 'bg-[#7a0000] text-white' 
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              <Bus className="w-3 h-3" />
-              Bus
-            </button>
+      {/* MTA Styled Header */}
+      <div className="mb-3 flex-shrink-0">
+        {/* Top label bar */}
+        <div className="flex items-center justify-between bg-gradient-to-r from-[#0039A6] to-[#0052cc] rounded-t-lg px-3 py-2">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+              <Train className="w-4 h-4 text-[#0039A6]" />
+            </div>
+            <span className="text-white font-bold tracking-wide text-sm">
+              {activeTab === 'subway' ? 'MTA SUBWAY TRACKER' : 'MTA BUS TRACKER'}
+            </span>
           </div>
+          <button
+            onClick={handleRefresh}
+            className="text-white/70 hover:text-white transition-colors p-1"
+            disabled={loading}
+          >
+            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+          </button>
         </div>
-        <button
-          onClick={handleRefresh}
-          className="text-[#ff8a8a] hover:text-white transition-colors"
-          disabled={loading}
-        >
-          <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-        </button>
+        
+        {/* Tab bar */}
+        <div className="flex bg-[#1a1a1a] rounded-b-lg border-t border-[#0039A6]/30">
+          <button
+            onClick={() => handleTabChange('subway')}
+            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold transition-all ${
+              activeTab === 'subway' 
+                ? 'bg-[#0039A6] text-white rounded-bl-lg' 
+                : 'text-gray-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <Train className="w-4 h-4" />
+            SUBWAY
+          </button>
+          <button
+            onClick={() => handleTabChange('bus')}
+            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold transition-all ${
+              activeTab === 'bus' 
+                ? 'bg-[#0039A6] text-white rounded-br-lg' 
+                : 'text-gray-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <Bus className="w-4 h-4" />
+            BUS
+          </button>
+        </div>
       </div>
 
       {/* Content */}
