@@ -102,15 +102,15 @@ export function TrafficCameraWidget() {
   }
 
   return (
-    <div className="rounded-lg p-4 font-mono text-sm h-full flex flex-col overflow-hidden bg-white border border-gray-200 shadow-lg">
+    <div className="spdr-panel p-4 font-mono text-sm h-full flex flex-col overflow-hidden">
       {/* Terminal Header */}
-      <div className="flex items-center justify-between mb-3 border-b border-gray-300 pb-2">
+      <div className="flex items-center justify-between mb-3 border-b border-[#7a0000] pb-2">
         <div className="text-[#DB231E] uppercase tracking-wider font-bold">
           NYC Traffic Cameras
         </div>
         {/* Size slider */}
         <div className="flex items-center gap-2">
-          <span className="text-gray-600 text-xs">size</span>
+          <span className="text-gray-500 text-xs">size</span>
           <input
             type="range"
             min="120"
@@ -124,65 +124,68 @@ export function TrafficCameraWidget() {
         </div>
       </div>
 
-      {/* Camera Grid */}
-      <div className="text-[#DB231E] text-xs mb-3">
-        LIVE FEEDS
-      </div>
-      
-      {selectedCameras.length === 0 ? (
-        <div className="text-gray-600 text-center py-8 mb-3 flex-1">
-          [No cameras selected. Click markers on the map below to add feeds.]
+      {/* White content area */}
+      <div className="bg-white rounded-lg p-3 flex-1 flex flex-col min-h-0 overflow-hidden">
+        {/* Camera Grid */}
+        <div className="text-[#DB231E] text-xs mb-3 font-bold">
+          LIVE FEEDS
         </div>
-      ) : (
-        <div 
-          className="flex flex-wrap gap-2 mb-3 flex-1 overflow-y-auto min-h-0 content-start"
-        >
-          {selectedCameras.map((camera) => (
-            <div 
-              key={camera.id} 
-              className="bg-black/50 border border-gray-800 rounded overflow-hidden group flex-shrink-0"
-              style={{ width: `${cameraSize}px` }}
-            >
-              <div className="aspect-square bg-black relative">
-                <img
-                  key={`${camera.id}-${imageKey}`}
-                  src={`${camera.imageUrl}?t=${Date.now()}`}
-                  alt={camera.name}
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect fill="%23111" width="400" height="300"/><text fill="%23333" font-family="monospace" font-size="12" x="50%" y="50%" text-anchor="middle">[FEED_OFFLINE]</text></svg>';
-                  }}
-                />
-                {/* Remove button - shows on hover */}
-                <button
-                  onClick={() => removeCamera(camera.id)}
-                  className="absolute top-1 right-1 bg-black/70 hover:bg-red-900/80 text-gray-500 hover:text-red-400 text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                  [x]
-                </button>
-              </div>
-              {/* Info bar - just name */}
-              <div className="p-1.5 border-t border-gray-300 bg-gray-100">
-                <div className="text-gray-700 text-[10px] truncate">
-                  {camera.name}
+        
+        {selectedCameras.length === 0 ? (
+          <div className="text-gray-600 text-center py-8 mb-3 flex-1">
+            [No cameras selected. Click markers on the map below to add feeds.]
+          </div>
+        ) : (
+          <div 
+            className="flex flex-wrap gap-2 mb-3 flex-1 overflow-y-auto min-h-0 content-start"
+          >
+            {selectedCameras.map((camera) => (
+              <div 
+                key={camera.id} 
+                className="bg-gray-100 border border-gray-300 rounded overflow-hidden group flex-shrink-0"
+                style={{ width: `${cameraSize}px` }}
+              >
+                <div className="aspect-square bg-black relative">
+                  <img
+                    key={`${camera.id}-${imageKey}`}
+                    src={`${camera.imageUrl}?t=${Date.now()}`}
+                    alt={camera.name}
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect fill="%23111" width="400" height="300"/><text fill="%23333" font-family="monospace" font-size="12" x="50%" y="50%" text-anchor="middle">[FEED_OFFLINE]</text></svg>';
+                    }}
+                  />
+                  {/* Remove button - shows on hover */}
+                  <button
+                    onClick={() => removeCamera(camera.id)}
+                    className="absolute top-1 right-1 bg-black/70 hover:bg-red-900/80 text-gray-500 hover:text-red-400 text-xs px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    [x]
+                  </button>
+                </div>
+                {/* Info bar - just name */}
+                <div className="p-1.5 border-t border-gray-300 bg-white">
+                  <div className="text-gray-700 text-[10px] truncate">
+                    {camera.name}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
 
-      {/* Leaflet Map - BELOW the feeds */}
-      <div className="flex-shrink-0">
-        <LeafletMap 
-          cameras={allCameras} 
-          selectedIds={selectedCameraIds}
-          onToggle={toggleCamera}
-        />
+        {/* Leaflet Map - BELOW the feeds */}
+        <div className="flex-shrink-0">
+          <LeafletMap 
+            cameras={allCameras} 
+            selectedIds={selectedCameraIds}
+            onToggle={toggleCamera}
+          />
+        </div>
       </div>
 
       {/* Footer */}
-      <div className="flex-shrink-0 mt-auto pt-2 border-t border-gray-300 text-center text-gray-500 text-[10px]">
+      <div className="flex-shrink-0 mt-3 pt-2 border-t border-[#7a0000] text-center text-gray-500 text-[10px]">
         Auto-refresh: 5s
       </div>
     </div>
