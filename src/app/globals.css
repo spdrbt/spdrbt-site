@@ -44,41 +44,25 @@ body {
   backdrop-filter: blur(5px);
 }
 
-/* Circle pulse animation for header */
-@keyframes circle-pulse {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(3);
-    opacity: 0;
-  }
+/* Sonar animation */
+@keyframes sonar {
+  0% { width: 0; height: 0; opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { width: 400px; height: 400px; opacity: 0; }
 }
 
-.circle-pulse {
+.sonar-ring::before {
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
-  height: 300%;
-  border: 1px solid var(--spdr-red);
+  width: 0;
+  height: 0;
+  border: 2px solid var(--spdr-red);
   border-radius: 50%;
-  background: transparent;
+  transform: translate(-50%, -50%);
+  animation: sonar 4s ease-out infinite;
   opacity: 0;
-  pointer-events: none;
-}
-
-.circle-pulse-1 {
-  animation: circle-pulse 4s ease-out infinite;
-}
-
-.circle-pulse-2 {
-  animation: circle-pulse 4s ease-out infinite 1.33s;
-}
-
-.circle-pulse-3 {
-  animation: circle-pulse 4s ease-out infinite 2.66s;
 }
 
 /* Typewriter animation */
