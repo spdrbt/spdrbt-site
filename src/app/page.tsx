@@ -43,26 +43,16 @@ export default function Home() {
         <AnalyticsWidget />
       </div>
 
-      {/* Traffic Cameras & MTA Tracker Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-10" style={{ height: '750px' }}>
-        {/* Cameras Section */}
-        <div className="lg:col-span-2 flex flex-col h-full">
-          <h2 className="text-white uppercase tracking-wider text-xl mb-4 border-b-2 border-[#7a0000] pb-2 flex-shrink-0">
-            Live Traffic Cameras
-          </h2>
-          <div className="flex-1 overflow-hidden">
-            <TrafficCameraWidget />
-          </div>
+      {/* Traffic Cameras Section */}
+      <h2 className="text-white uppercase tracking-wider text-xl mt-10 mb-6 border-b-2 border-[#7a0000] pb-2">
+        Live Traffic Cameras
+      </h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2" style={{ height: '680px' }}>
+          <TrafficCameraWidget />
         </div>
-        
-        {/* MTA Tracker Section */}
-        <div className="flex flex-col h-full">
-          <h2 className="text-white uppercase tracking-wider text-xl mb-4 border-b-2 border-[#7a0000] pb-2 flex-shrink-0">
-            MTA Tracker
-          </h2>
-          <div className="flex-1 overflow-hidden">
-            <MTATracker />
-          </div>
+        <div style={{ height: '680px' }}>
+          <MTATracker />
         </div>
       </div>
 
